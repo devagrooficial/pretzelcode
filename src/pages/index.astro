@@ -1,11 +1,78 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import BentoGrid from '../components/BentoGrid.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+
+	<!-- Hero Section -->
+	<section class="relative w-full bg-[#080808] border-b border-[#1A1A1A] overflow-hidden flex flex-col justify-center min-h-[90vh]">
+
+		<!-- Layer 0: Motion Placeholder (3D element hook) -->
+		<div class="absolute inset-0 z-0" id="hero-motion-placeholder" aria-hidden="true"></div>
+
+		<!-- Layer 1: Subtle Grid (~5% opacity) -->
+		<div
+			class="absolute inset-0 z-0 pointer-events-none"
+			style="opacity:0.05; background-image:linear-gradient(to right,#ffffff 1px,transparent 1px),linear-gradient(to bottom,#ffffff 1px,transparent 1px); background-size:4rem 4rem; mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 40%,transparent 80%); -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 40%,transparent 80%);"
+			aria-hidden="true"
+		></div>
+
+		<!-- Layer 2: Primary Spotlight Radial Glow -->
+		<div
+			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] rounded-full pointer-events-none z-0"
+			style="background:radial-gradient(ellipse at center,rgba(172,72,26,0.18) 0%,transparent 70%); filter:blur(80px);"
+			aria-hidden="true"
+		></div>
+
+		<!-- Layer 3: Content -->
+		<div class="relative z-10 w-full max-w-5xl mx-auto px-6 py-28 md:py-36 flex flex-col items-center justify-center text-center">
+
+			<!-- Intro Badge -->
+			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/[0.08] backdrop-blur-md mb-10">
+				<span class="text-xs text-neutral-400 tracking-wide font-medium">Introducing Pretzel Code Studio</span>
+			</div>
+
+			<!-- Headline -->
+			<h1 class="text-5xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter leading-[1.1] text-white max-w-5xl">
+				We don't just build software.<br class="hidden md:block" /> We engineer SaaS.
+			</h1>
+
+			<!-- Subheadline -->
+			<p class="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mt-6 mb-14">
+				An elite technology studio headquartered in Delaware, delivering scalable SaaS, Apps, and Web platforms for the US market. Powered by Python.
+			</p>
+
+			<!-- CTAs -->
+			<div class="flex flex-col sm:flex-row items-center gap-5">
+
+				<!-- Primary: White/Light with primary glow on hover -->
+				<a
+					href="/contact"
+					id="cta-start-project"
+					class="px-8 py-4 bg-white text-[#0a0a0a] font-semibold rounded-full transition-all duration-300 shadow-sm hover:shadow-[0_0_30px_var(--color-primary-glow),0_0_60px_rgba(172,72,26,0.08)] hover:-translate-y-0.5 hover:bg-white/95"
+				>
+					Start a Project
+				</a>
+
+				<!-- Secondary: Ghost with backdrop blur -->
+				<a
+					href="/backstage"
+					id="cta-backstage"
+					class="px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white font-medium transition-all duration-300 hover:bg-white/10 hover:border-primary hover:shadow-[0_0_20px_var(--color-primary-glow)] hover:-translate-y-0.5"
+				>
+					Enter the Backstage
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<main class="flex-1 w-full max-w-7xl mx-auto px-6 py-24 flex flex-col gap-16">
+		<BentoGrid />
+	</main>
+
+	<Footer />
 </Layout>

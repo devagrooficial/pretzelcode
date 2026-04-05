@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  
+  <main class="flex-1 w-full max-w-7xl mx-auto px-6 py-12 md:py-24 flex flex-col gap-16">
+    <header class="w-full flex flex-col items-center justify-center text-center pt-16 md:pt-24 pb-12 overflow-visible">
+      <span class="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Our Approach</span>
+      <h1 class="text-5xl md:text-7xl lg:text-[8rem] font-medium tracking-tighter leading-[1.05] text-white">
+        Builders first. <br class="hidden md:block"/>Agency second.
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto tracking-normal leading-relaxed mt-6">
+        We are engineers, founders, and operators. Pretzel Code was built to engineer the kind of software we would invest in ourselves. Zero bureaucracy, 100% focus on shipping code.
+      </p>
+    </header>
+
+    <!-- The Manifesto -->
+    <article class="w-full max-w-2xl mx-auto px-4 mt-8 md:mt-16 mb-24 md:mb-32">
+      <div class="prose prose-invert prose-lg md:prose-xl font-sans text-gray-300 leading-relaxed font-light">
+        <p class="mb-8">
+          Pretzel Code was forged in the trenches of heavy-duty software engineering. We don't just build glossy landing pages; we architect the operational backbones that keep companies moving.
+        </p>
+        <p class="mb-8">
+          Our deepest expertise lies in untangling absolute chaos. We have spent years engineering high-stakes Field Service Management platforms—systems that handle advanced routing algorithms, coordinate fleets of technicians on the streets, and synchronize offline field data with legacy ERPs under punishing constraints.
+        </p>
+        <p class="mb-12">
+          The logic is simple: <strong class="text-white font-medium">If we can solve the unpredictable, physical-world problems of field operations with code, we can solve any digital SaaS challenge you throw at us.</strong> We bring that exact same rigorous, fault-tolerant engineering mindset to every product we incubate or build for our partners.
+        </p>
+        
+        <div class="border-t border-[#1A1A1A] pt-8 mt-12 flex flex-col items-start">
+          <p class="text-white font-medium text-lg m-0">Luis Nathan</p>
+          <p class="text-gray-500 text-sm tracking-wide uppercase font-mono m-0 mt-1">Founder & Lead Engineer</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- The SaaS Factory -->
+    <section class="w-full relative mt-12 md:mt-16 rounded-[32px] overflow-hidden border border-[#1A1A1A] bg-[#050505]">
+      <div class="absolute inset-0 noise-bg opacity-[0.03]"></div>
+      <div class="p-10 md:p-16 lg:p-24 flex flex-col lg:flex-row gap-12 items-center relative z-10 w-full">
+        <div class="flex-1 w-full">
+          <h2 class="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">We eat our own dog food.</h2>
+          <p class="text-gray-400 text-lg md:text-xl font-light leading-relaxed mb-6">
+            We don't just build for clients. We continuously conceptualize, build, and operate our own proprietary software products.
+          </p>
+          <p class="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+            This internal <span class="text-white font-medium">SaaS Factory</span> forces us to stay sharp, deal with real-world infrastructure scaling, and constantly refine our custom Python and React Native toolchains. When we build your product, we use the exact same elite architecture we use to build ours.
+          </p>
+        </div>
+        <div class="w-full lg:w-2/5 flex justify-center items-center">
+          <div class="relative w-full aspect-square max-w-sm border border-[#171717] bg-[#090909] rounded-[24px] flex items-center justify-center overflow-hidden shadow-[0_0_80px_rgba(255,255,255,0.02)]">
+            <div class="absolute inset-0 flex items-center justify-center opacity-10">
+               <svg class="w-full h-full text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <span class="text-[#333] font-mono text-sm tracking-widest relative z-10 flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10B981] animate-pulse"></span>
+              INTERNAL_FACTORY
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Operating System -->
+    <section class="w-full mt-16 md:mt-32">
+      <div class="flex flex-col items-center text-center mb-16">
+        <span class="text-xs md:text-sm uppercase tracking-[0.3em] font-bold text-[#666] mb-4 font-mono">Operations</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">The Operating System.</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+        
+        <!-- Box 1 (6 col): Nearshore & Async -->
+        <div class="md:col-span-6 bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 md:p-10 relative overflow-hidden group">
+          <div class="absolute inset-0 noise-bg opacity-[0.03]"></div>
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="mb-10 w-full flex items-center justify-between border-b border-[#1A1A1A] pb-4">
+               <span class="text-primary font-mono text-xs uppercase tracking-widest">Nearshore & Async</span>
+               <div class="flex items-center gap-2 px-3 py-1 bg-[#111] border border-[#222] rounded-full">
+                  <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_5px_#10B981]"></span>
+                  <span class="text-[10px] text-gray-400 font-mono">EST/PST SYNC</span>
+               </div>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-6 leading-snug">Same Timezone,<br/><span class="text-gray-500">Silicon Valley Standard.</span></h3>
+            <p class="text-gray-400 font-light leading-relaxed mt-auto">
+              Headquartered in Delaware, we operate on US time for crucial syncs, while our execution is 80% asynchronous. Fewer Zoom calls, more code pushed.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Box 2 (6 col): No Middlemen -->
+        <div class="md:col-span-6 bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 md:p-10 relative overflow-hidden group">
+          <div class="absolute inset-0 noise-bg opacity-[0.03]"></div>
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="mb-10 w-full flex items-center justify-between border-b border-[#1A1A1A] pb-4">
+               <span class="text-primary font-mono text-xs uppercase tracking-widest">No Middlemen</span>
+               <div class="flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-[#555]" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+               </div>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-6 leading-snug">Direct to<br/><span class="text-gray-500">Engineers.</span></h3>
+            <p class="text-gray-400 font-light leading-relaxed mt-auto">
+              You don't talk to account managers who can't read code. You talk directly to the full-stack architects building your product.
+            </p>
+          </div>
+        </div>
+
+        <!-- Box 3 (12 col): The Anti-Bloat Philosophy -->
+        <div class="col-span-1 md:col-span-12 bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 md:p-12 relative overflow-hidden group min-h-[300px] flex flex-col md:flex-row gap-12 items-center">
+          <div class="absolute inset-0 noise-bg opacity-[0.03]"></div>
+          
+          <div class="flex-1 relative z-10">
+            <div class="text-primary font-mono text-xs uppercase tracking-widest mb-6">Architecture</div>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-snug">The Anti-Bloat<br/><span class="text-gray-500">Philosophy.</span></h3>
+            <p class="text-gray-400 font-light leading-relaxed max-w-2xl">
+              We hate slow software. Our philosophy is lean architecture and modern infrastructure. We automate heavy processes using custom Python microservices, focusing human intelligence entirely on your unique business logic.
+            </p>
+          </div>
+
+          <!-- CLI Animation Mock -->
+          <div class="w-full md:w-1/3 h-48 bg-[#000] border border-[#222] rounded-[16px] p-6 relative z-10 font-mono text-xs md:text-sm text-[#4ade80] flex flex-col justify-end overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-[#333] transition-colors duration-500">
+            <div class="w-full flex items-center gap-2 absolute top-4 left-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+            </div>
+            <div class="mt-8 flex flex-col gap-2 opacity-80">
+              <div class="flex gap-2"><span>></span><span class="text-gray-500 line-through decoration-red-500">rm -rf legacy_bloat/</span></div>
+              <div class="flex gap-2"><span>></span><span class="text-gray-500 line-through decoration-red-500">rm -rf boilerplate_code/</span></div>
+              <div class="flex gap-2 animate-pulse mt-2"><span>></span><span class="text-white relative">deploy_microservices.py <span class="absolute -right-2 top-0 bottom-0 w-1.5 bg-white animate-pulse"></span></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- The Studio -->
+    <section class="w-full relative mt-24 md:mt-32 rounded-[32px] overflow-hidden border border-[#1A1A1A] bg-[#050505] h-[400px] md:h-[600px] group flex items-center justify-center">
+      <div class="absolute inset-0 noise-bg opacity-10 z-10 pointer-events-none"></div>
+      
+      <!-- Placeholder Image / Graphic for "Deep Work" -->
+      <div class="absolute inset-0 z-0 bg-[#020202]">
+         <!-- Parallax Layer (Simulated with relative positioning and scale) -->
+         <div class="w-full h-full relative flex items-center justify-center transform scale-105 group-hover:scale-100 transition-transform duration-[10s] ease-out">
+             <!-- Simulated Macbook / Dark environment with neon -->
+             <div class="w-[90%] md:w-[800px] aspect-[16/10] rounded-[32px] border border-[#222] bg-[#000] shadow-[0_0_150px_rgba(59,130,246,0.05)] flex items-center justify-center flex-col relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent opacity-30"></div>
+                
+                <!-- Abstract Code blocks -->
+                <div class="w-full h-full p-8 md:p-12 flex flex-col gap-4 font-mono text-xs opacity-[0.15]">
+                   <div class="w-full flex gap-4">
+                      <div class="w-1/3 h-4 bg-[#333] rounded"></div>
+                      <div class="w-1/4 h-4 bg-[#555] rounded"></div>
+                   </div>
+                   <div class="w-2/3 h-4 bg-[#2f3e46] rounded mt-2"></div>
+                   <div class="w-1/2 h-4 bg-[#2f3e46] rounded"></div>
+                   <div class="w-5/6 h-4 bg-[#333] rounded mt-4"></div>
+                   <div class="w-full flex gap-4">
+                      <div class="w-1/4 h-4 bg-[#555] rounded"></div>
+                      <div class="w-3/4 h-4 bg-[#333] rounded"></div>
+                   </div>
+                   <div class="w-1/3 h-4 bg-[#2f3e46] rounded"></div>
+                   
+                   <div class="mt-auto self-end text-[#3b82f6] text-opacity-50"># EXECUTING PIPELINE...</div>
+                </div>
+             </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- The CTA -->
+    <section class="w-full mt-24 md:mt-32 mb-24 flex flex-col items-center justify-center text-center relative">
+      <h2 class="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tighter relative z-10">Let's build your next asset.</h2>
+      <p class="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mb-12 relative z-10">
+        We are always open to audit complex architectures or initiate new builds from scratch.
+      </p>
+      <a href="/contact" class="group relative z-10 px-8 py-5 bg-primary text-white font-bold rounded-full hover:bg-primary-hover transition-colors shadow-[0_0_30px_var(--color-primary-glow)] flex items-center justify-center gap-3 text-lg">
+        Schedule an Architecture Audit
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,126 @@
+---
+// Minimalist Navbar for Pretzel Code
+const links = [
+  { name: 'Work',      href: '/work' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Expertise', href: '/expertise' },
+  { name: 'Backstage', href: '/backstage' },
+  { name: 'Company',   href: '/company' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-[100] bg-[#080808]/80 backdrop-blur-md border-b border-[#1A1A1A] transition-colors duration-300">
+  <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
+
+    <!-- Logo -->
+    <a href="/" data-astro-prefetch="load" class="hover:opacity-80 transition-opacity flex items-center">
+      <img src="/images/logoHorizontalwhite.png" alt="Pretzel Code" class="h-10 w-auto" />
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+      {links.map((link) => (
+        <li>
+          <a href={link.href} data-astro-prefetch class="hover:text-white transition-colors duration-200">
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex items-center justify-center text-gray-400 hover:text-white transition-colors duration-200 focus:outline-none"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <!-- Hamburger icon (hidden when open) -->
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="6"  y2="6" />
+        <line x1="4" x2="20" y1="12" y2="12"/>
+        <line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+      <!-- Close icon (hidden by default) -->
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+        <line x1="18" y1="6"  x2="6"  y2="18"/>
+        <line x1="6"  y1="6"  x2="18" y2="18"/>
+      </svg>
+    </button>
+
+  </nav>
+
+  <!-- Mobile dropdown menu (hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-[#080808]/95 backdrop-blur-md border-b border-[#1A1A1A] flex-col px-6 py-4 space-y-1"
+  >
+    {links.map((link) => (
+      <a
+        href={link.href}
+        data-astro-prefetch
+        class="block py-3 px-2 text-sm font-medium text-gray-400 hover:text-white border-b border-[#111] last:border-0 transition-colors duration-200"
+      >
+        {link.name}
+      </a>
+    ))}
+
+    <!-- Mobile CTA -->
+    <div class="pt-3 pb-1">
+      <a
+        href="/company"
+        class="block w-full text-center py-3 px-4 rounded-full bg-white/5 border border-white/10 text-sm text-white font-medium hover:bg-white/10 hover:border-primary transition-all duration-300"
+      >
+        Start a Project →
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn  = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
+    const menu = document.getElementById('mobile-menu') as HTMLElement | null;
+
+    if (!btn || !menu) return;
+
+    // Clone the button to surgically remove any stale event listeners
+    // accumulated from previous SPA navigations.
+    const freshBtn = btn.cloneNode(true) as HTMLButtonElement;
+    btn.parentNode!.replaceChild(freshBtn, btn);
+
+    const iconOpen  = freshBtn.querySelector('#icon-open')  as SVGElement | null;
+    const iconClose = freshBtn.querySelector('#icon-close') as SVGElement | null;
+
+    function openMenu() {
+      menu!.classList.remove('hidden');
+      menu!.classList.add('flex');
+      iconOpen?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      freshBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      menu!.classList.add('hidden');
+      menu!.classList.remove('flex');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      freshBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    freshBtn.addEventListener('click', () => {
+      const isOpen = !menu!.classList.contains('hidden');
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    // Close menu when any mobile nav link is clicked (SPA navigation)
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  });
+</script>
