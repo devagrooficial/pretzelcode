@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative w-full bg-[#080808] border-b border-[#1A1A1A] overflow-hidden flex flex-col items-center justify-center pt-32 pb-24 md:pt-40 md:pb-28 px-6">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-[radial-gradient(ellipse_at_top,rgba(172,72,26,0.14)_0%,transparent_70%)] pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col items-center text-center max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/[0.08] backdrop-blur-md mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        <span class="text-xs text-neutral-400 tracking-wide font-medium uppercase">Selective · By Application Only</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-[6rem] font-medium tracking-tighter leading-[1.05] text-white">
+        The Equity Partnership.
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto tracking-normal leading-relaxed mt-6 mb-10">
+        Pay the minimum. Own the majority. A rare model for founders we believe in — you cover 30% of the build, we invest the rest, and we share the upside together.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-5">
+        <a
+          href="#apply"
+          class="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-hover transition-all duration-300 shadow-[0_0_20px_var(--color-primary-glow)] hover:shadow-[0_0_35px_var(--color-primary-glow)] hover:-translate-y-0.5"
+        >
+          Apply for Partnership
+        </a>
+        <a
+          href="#how-it-works"
+          class="px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white font-medium transition-all duration-300 hover:bg-white/10 hover:border-primary hover:shadow-[0_0_20px_var(--color-primary-glow)] hover:-translate-y-0.5"
+        >
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="flex-1 w-full max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col gap-28">
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="w-full scroll-mt-24">
+      <div class="max-w-2xl mb-14">
+        <span class="text-primary font-semibold tracking-widest text-sm uppercase mb-4 block">How It Works</span>
+        <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-6">From idea to shared upside.</h2>
+        <p class="text-lg text-neutral-400 leading-relaxed">
+          Four steps. No shortcuts. Every application goes through the same rigorous review before a single line of code is written.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Step 1 -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 flex flex-col gap-5 hover:border-primary/40 transition-colors duration-300">
+          <span class="text-primary font-mono font-semibold text-sm tracking-widest">01.</span>
+          <h3 class="text-xl font-semibold text-white tracking-tight">Submit Your Idea</h3>
+          <p class="text-neutral-500 text-sm leading-relaxed">
+            Fill out the partnership application below with your SaaS concept, target market, and where the project stands today.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 flex flex-col gap-5 hover:border-primary/40 transition-colors duration-300">
+          <span class="text-primary font-mono font-semibold text-sm tracking-widest">02.</span>
+          <h3 class="text-xl font-semibold text-white tracking-tight">Full Assessment</h3>
+          <p class="text-neutral-500 text-sm leading-relaxed">
+            We evaluate the project's scope, market viability, and technical complexity — and the partner behind it. Not every idea qualifies.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 flex flex-col gap-5 hover:border-primary/40 transition-colors duration-300">
+          <span class="text-primary font-mono font-semibold text-sm tracking-widest">03.</span>
+          <h3 class="text-xl font-semibold text-white tracking-tight">Build Together</h3>
+          <p class="text-neutral-500 text-sm leading-relaxed">
+            Approved partners cover 30% of the development cost. Pretzel Code invests the remaining 70% as our own stake in the outcome.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 flex flex-col gap-5 hover:border-primary/40 transition-colors duration-300">
+          <span class="text-primary font-mono font-semibold text-sm tracking-widest">04.</span>
+          <h3 class="text-xl font-semibold text-white tracking-tight">Share the Upside</h3>
+          <p class="text-neutral-500 text-sm leading-relaxed">
+            When the SaaS sells or scales into recurring revenue, the partner keeps 60% and Pretzel Code takes 40%. Aligned incentives, real skin in the game.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- The Split -->
+    <section class="w-full">
+      <div class="max-w-2xl mb-14">
+        <span class="text-primary font-semibold tracking-widest text-sm uppercase mb-4 block">The Split</span>
+        <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-6">Two numbers. One clear contract.</h2>
+        <p class="text-lg text-neutral-400 leading-relaxed">
+          Everything is spelled out before we start — what you pay to build, and what you keep when it pays off.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Development Investment -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 md:p-10 flex flex-col">
+          <span class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-6">Development Investment</span>
+          <div class="flex items-end gap-8 mb-6">
+            <div>
+              <p class="text-5xl font-medium text-white tracking-tighter">30%</p>
+              <p class="text-sm text-neutral-500 mt-1">Paid by the Partner</p>
+            </div>
+            <div>
+              <p class="text-5xl font-medium text-neutral-600 tracking-tighter">70%</p>
+              <p class="text-sm text-neutral-500 mt-1">Invested by Pretzel Code</p>
+            </div>
+          </div>
+          <div class="w-full h-3 rounded-full bg-[#1A1A1A] overflow-hidden flex mt-auto">
+            <div class="h-full bg-neutral-300" style="width:30%"></div>
+            <div class="h-full bg-primary" style="width:70%"></div>
+          </div>
+        </div>
+
+        <!-- Revenue & Exit Share -->
+        <div class="bg-[#050505] border border-[#1A1A1A] rounded-[24px] p-8 md:p-10 flex flex-col">
+          <span class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-6">Revenue & Exit Share</span>
+          <div class="flex items-end gap-8 mb-6">
+            <div>
+              <p class="text-5xl font-medium text-white tracking-tighter">60%</p>
+              <p class="text-sm text-neutral-500 mt-1">Kept by the Partner</p>
+            </div>
+            <div>
+              <p class="text-5xl font-medium text-neutral-600 tracking-tighter">40%</p>
+              <p class="text-sm text-neutral-500 mt-1">Share for Pretzel Code</p>
+            </div>
+          </div>
+          <div class="w-full h-3 rounded-full bg-[#1A1A1A] overflow-hidden flex mt-auto">
+            <div class="h-full bg-neutral-300" style="width:60%"></div>
+            <div class="h-full bg-primary" style="width:40%"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Who Qualifies -->
+    <section class="w-full">
+      <div class="rounded-[32px] border border-[#1A1A1A] bg-[#050505] p-8 md:p-14 lg:p-16 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <span class="text-primary font-semibold tracking-widest text-sm uppercase mb-4 block">Who Qualifies</span>
+            <h2 class="text-3xl md:text-4xl font-medium tracking-tighter text-white mb-6">This isn't for every client.</h2>
+            <p class="text-neutral-400 leading-relaxed max-w-md">
+              We accept a small number of partnerships per quarter. Both the project and the partner are reviewed before we commit our own capital and time.
+            </p>
+          </div>
+
+          <ul class="flex flex-col gap-5">
+            <li class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <span class="text-neutral-300 leading-relaxed">A validated idea with a clear target market — not just a concept on a napkin.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <span class="text-neutral-300 leading-relaxed">A founder who is hands-on and committed to the product long after launch.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <span class="text-neutral-300 leading-relaxed">Ability to cover your 30% share of the development investment.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <span class="text-neutral-300 leading-relaxed">Willingness to sign a clear, transparent contract before any development starts.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="apply" class="w-full scroll-mt-24">
+      <div class="max-w-2xl mb-14">
+        <span class="text-primary font-semibold tracking-widest text-sm uppercase mb-4 block">Apply</span>
+        <h2 class="text-4xl md:text-5xl font-medium tracking-tighter text-white mb-6">Tell us about your SaaS.</h2>
+        <p class="text-lg text-neutral-400 leading-relaxed">
+          Every application is reviewed manually. We'll follow up only if the project and the partnership are a fit.
+        </p>
+      </div>
+
+      <form id="partnership-form" class="bg-[#050505] border border-[#1A1A1A] rounded-[32px] p-8 md:p-12 flex flex-col gap-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col gap-2">
+            <label for="full-name" class="text-xs font-mono uppercase tracking-widest text-neutral-500">Full Name</label>
+            <input id="full-name" name="fullName" type="text" required
+              class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary/50 transition-colors" placeholder="Jane Doe" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="email" class="text-xs font-mono uppercase tracking-widest text-neutral-500">Email</label>
+            <input id="email" name="email" type="email" required
+              class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary/50 transition-colors" placeholder="jane@company.com" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col gap-2">
+            <label for="project-name" class="text-xs font-mono uppercase tracking-widest text-neutral-500">Project / Company Name</label>
+            <input id="project-name" name="projectName" type="text" required
+              class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary/50 transition-colors" placeholder="NexusFlow" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="stage" class="text-xs font-mono uppercase tracking-widest text-neutral-500">Current Stage</label>
+            <select id="stage" name="stage" required
+              class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-primary/50 transition-colors appearance-none">
+              <option value="" disabled selected>Select one</option>
+              <option value="Idea / Concept">Idea / Concept</option>
+              <option value="Validated Market">Validated Market</option>
+              <option value="MVP in Progress">MVP in Progress</option>
+              <option value="Existing SaaS">Existing SaaS</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="pitch" class="text-xs font-mono uppercase tracking-widest text-neutral-500">One-Line Pitch</label>
+          <input id="pitch" name="pitch" type="text" required
+            class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary/50 transition-colors" placeholder="A field service platform for HVAC companies." />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="details" class="text-xs font-mono uppercase tracking-widest text-neutral-500">Tell Us About Your SaaS Idea</label>
+          <textarea id="details" name="details" rows="6" required
+            class="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+            placeholder="Who is it for, what problem does it solve, and why now?"></textarea>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
+          <p class="text-xs text-neutral-600 max-w-sm leading-relaxed">
+            Submitting opens your email client with your application pre-filled, addressed to our partnerships team.
+          </p>
+          <button type="submit"
+            class="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-hover transition-all duration-300 shadow-[0_0_20px_var(--color-primary-glow)] hover:shadow-[0_0_35px_var(--color-primary-glow)] hover:-translate-y-0.5 shrink-0">
+            Submit Application
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <Footer />
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById('partnership-form') as HTMLFormElement | null;
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        const fullName = String(data.get('fullName') || '');
+        const email = String(data.get('email') || '');
+        const projectName = String(data.get('projectName') || '');
+        const stage = String(data.get('stage') || '');
+        const pitch = String(data.get('pitch') || '');
+        const details = String(data.get('details') || '');
+
+        const subject = `Equity Partnership Application — ${projectName}`;
+        const body =
+          `Name: ${fullName}\n` +
+          `Email: ${email}\n` +
+          `Project: ${projectName}\n` +
+          `Stage: ${stage}\n` +
+          `Pitch: ${pitch}\n\n` +
+          `Details:\n${details}`;
+
+        window.location.href = `mailto:partnerships@pretzelcode.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    });
+  </script>
+</Layout>
