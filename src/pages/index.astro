@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import BentoGrid from '../components/BentoGrid.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
 ---
 
 <Layout>
@@ -33,44 +34,56 @@ import BentoGrid from '../components/BentoGrid.astro';
 
 			<!-- Intro Badge -->
 			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/[0.08] backdrop-blur-md mb-10">
-				<span class="text-xs text-neutral-400 tracking-wide font-medium">Introducing Pretzel Code Studio</span>
+				<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+				<span class="text-xs text-neutral-400 tracking-wide font-medium uppercase">End-to-End SaaS Specialists</span>
 			</div>
 
 			<!-- Headline -->
-			<h1 class="text-5xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter leading-[1.1] text-white max-w-5xl">
-				We don't just build software.<br class="hidden md:block" /> We engineer SaaS.
+			<h1 class="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tighter leading-[1.05] text-white max-w-5xl">
+				We design, build, launch,<br class="hidden md:block" /> and run your SaaS.
 			</h1>
 
 			<!-- Subheadline -->
-			<p class="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mt-6 mb-14">
-				An elite technology studio headquartered in Delaware, delivering scalable SaaS, Apps, and Web platforms for the US market.
+			<p class="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mt-6 mb-10">
+				Pretzel Code is a Delaware-based studio specialized in the <span class="text-white font-medium">entire SaaS lifecycle</span> — discovery, brand, product design, architecture, development, launch, and continuous support. One team owns every phase, from day zero to recurring revenue.
 			</p>
 
 			<!-- CTAs -->
-			<div class="flex flex-col sm:flex-row items-center gap-5">
+			<div class="flex flex-col sm:flex-row items-center gap-5 mb-12">
 
-				<!-- Primary: White/Light with primary glow on hover -->
+				<!-- Primary: Apply for Partnership -->
 				<a
-					href="/contact"
+					href="/partnership"
 					id="cta-start-project"
 					class="px-8 py-4 bg-white text-[#0a0a0a] font-semibold rounded-full transition-all duration-300 shadow-sm hover:shadow-[0_0_30px_var(--color-primary-glow),0_0_60px_rgba(172,72,26,0.08)] hover:-translate-y-0.5 hover:bg-white/95"
 				>
-					Start a Project
+					Apply for Partnership
 				</a>
 
-				<!-- Secondary: Ghost with backdrop blur -->
+				<!-- Secondary: Explore the process -->
 				<a
-					href="/work"
-					id="cta-work"
+					href="#process"
+					id="cta-process"
 					class="px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white font-medium transition-all duration-300 hover:bg-white/10 hover:border-primary hover:shadow-[0_0_20px_var(--color-primary-glow)] hover:-translate-y-0.5"
 				>
-					See our Work
+					Explore the Process
 				</a>
+			</div>
+
+			<!-- Engagement model strip -->
+			<div class="w-full max-w-3xl rounded-[20px] border border-[#1A1A1A] bg-[#0A0A0A]/80 backdrop-blur-md px-6 md:px-8 py-5 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+				<span class="text-[10px] font-mono uppercase tracking-widest text-primary whitespace-nowrap shrink-0">How we engage</span>
+				<p class="text-sm text-neutral-400 leading-relaxed text-center md:text-left">
+					One model, by application only — <span class="text-white font-medium">The Equity Partnership</span>. You cover <span class="text-white font-medium">30%</span> of the build, we invest the remaining <span class="text-white font-medium">70%</span>, and you keep <span class="text-white font-medium">60%</span> of revenue and exit upside.
+				</p>
 			</div>
 		</div>
 	</section>
 
-	<main class="flex-1 w-full max-w-7xl mx-auto px-6 py-24 flex flex-col gap-16">
+	<!-- The Full-Cycle SaaS Process -->
+	<ProcessTimeline />
+
+	<main class="flex-1 w-full max-w-7xl mx-auto px-6 pb-24 flex flex-col gap-16">
 		<BentoGrid />
 	</main>
 

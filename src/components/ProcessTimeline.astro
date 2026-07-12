@@ -1,0 +1,362 @@
+---
+// The Full-Cycle SaaS Process — interactive phase explorer (00 → 09)
+const phases = [
+  {
+    num: '00',
+    title: 'Discovery & Validation',
+    tag: 'Strategy',
+    desc: 'Before a single line of code or a logo exists, we pressure-test the business. Is the pain real? Will someone pay for the solution? We validate the market, define exactly who the product serves, and lock an MVP scope that solves the problem with nothing wasted.',
+    deliverables: [
+      'Problem & market validation',
+      'Direct & indirect competitor research',
+      'ICP & persona definition',
+      'Business model: subscription, usage or hybrid',
+      'Initial pricing & financial projection',
+      'MVP scope — the minimum that solves the problem',
+    ],
+  },
+  {
+    num: '01',
+    title: 'Brand & Visual Identity',
+    tag: 'Brand',
+    desc: 'Your SaaS needs a name people remember and an identity the market trusts. Most dev shops outsource this phase — we own it in-house, so your brand and your product are engineered by the same team, with the same standard.',
+    deliverables: [
+      'Naming + domain & social handle verification',
+      'Positioning & tone of voice',
+      'Logo, color palette, typography',
+      'Brand book (complete brand guide)',
+      'Visual assets: icons, illustrations, social templates',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Product Design — UX/UI',
+    tag: 'Design',
+    desc: 'We map every user journey and prototype the entire product in high fidelity before development begins. Every flow is validated with real users first, so we never code a screen twice.',
+    deliverables: [
+      'User journey mapping (core flows)',
+      'Low-fidelity wireframes',
+      'Navigable high-fidelity prototype (Figma)',
+      'Interface design system: components, states, grid',
+      'Usability testing with real users before code',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Architecture & Technical Planning',
+    tag: 'Engineering',
+    desc: 'The decisions made here determine whether your SaaS scales or collapses. We design the full technical foundation — stack, data model, security and compliance — before the first sprint starts.',
+    deliverables: [
+      'Stack definition: frontend, backend, database, hosting',
+      'Monolith vs microservices · multi-tenant vs single-tenant',
+      'Data modeling (database schema)',
+      'Integration mapping: payments, e-mail, SMS',
+      'Security & compliance: encryption, access control',
+      'Effort estimation & sprint roadmap',
+    ],
+  },
+  {
+    num: '04',
+    title: 'Development',
+    tag: 'Engineering',
+    desc: 'The longest phase, executed with the discipline of a product company. Full backend and frontend, subscription billing, multi-tenancy, an internal admin panel — and automated tests from day one.',
+    deliverables: [
+      'Environment setup: repository, CI/CD, code standards',
+      'Backend: API, auth, business rules, database',
+      'Frontend: screens, components, API integration, responsive',
+      'Multi-tenancy with data isolation between clients',
+      'Billing & subscriptions (Stripe) — upgrade, downgrade, cancel',
+      'Internal admin panel to manage customers',
+      'Automated tests: unit & integration',
+      'Security: encryption, RBAC, rate limiting, input sanitization',
+    ],
+  },
+  {
+    num: '05',
+    title: 'Infrastructure & DevOps',
+    tag: 'Operations',
+    desc: 'Your product runs on infrastructure built to survive growth: isolated environments, automated deploys, full observability — and a concrete plan for when your user base grows 10×.',
+    deliverables: [
+      'Cloud & hosting selection: AWS, GCP, Vercel, Railway',
+      'Separate environments: development, staging, production',
+      'CI/CD pipelines with automated deploys',
+      'Observability: logs, metrics, alerts',
+      'Backup & disaster recovery strategy',
+      '10× scalability plan',
+    ],
+  },
+  {
+    num: '06',
+    title: 'Testing & QA',
+    tag: 'Quality',
+    desc: 'Nothing ships on hope. Every core flow is tested end-to-end, under load, and against attack — then validated in a closed beta with real users before the official launch.',
+    deliverables: [
+      'Complete functional testing of all core flows',
+      'Load & performance testing',
+      'Security testing (baseline pentest)',
+      'Closed beta with real users before launch',
+    ],
+  },
+  {
+    num: '07',
+    title: 'Go-to-Market Preparation',
+    tag: 'Growth',
+    desc: 'A great product with no funnel is a dead product. We prepare the entire machine that converts visitors into activated, paying users — from the sales page to the analytics that prove it works.',
+    deliverables: [
+      'Sales landing page',
+      'Marketing & SEO content',
+      'Product onboarding: tutorials, tooltips, activation e-mails',
+      'Help center & end-user documentation',
+      'Final plans & pricing strategy',
+      'Analytics: conversion funnel & product events',
+    ],
+  },
+  {
+    num: '08',
+    title: 'Launch',
+    tag: 'Launch',
+    desc: 'Deploy, verify, announce. A controlled release with smoke tests in production before the doors open — soft launch first, official launch when the numbers say go.',
+    deliverables: [
+      'Production deploy',
+      'Domain & SSL certificate configuration',
+      'Smoke tests in production',
+      'Soft launch (closed beta) → official launch',
+      'Launch announcement & campaign',
+    ],
+  },
+  {
+    num: '09',
+    title: 'Support & Continuous Operation',
+    tag: 'Partnership',
+    desc: "Launch isn't the end — it's the start of the revenue curve. We stay on as your technical team under a monthly SLA: monitoring, maintenance, security updates, and the product roadmap that keeps you growing.",
+    deliverables: [
+      'Customer support structure: chat, ticket, e-mail',
+      'Error & uptime monitoring',
+      'Maintenance & bug fixes',
+      'Security updates',
+      'Product evolution: new roadmap features',
+      'Business metrics: churn, MRR, NPS',
+      'Continuous maintenance contract (monthly SLA)',
+    ],
+  },
+];
+---
+
+<style>
+  .phase-panel { display: none; }
+  .phase-panel.active {
+    display: flex;
+    animation: panelIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Phase nav button states */
+  .phase-btn { transition: all 0.3s ease; }
+  .phase-btn .phase-dot { transition: all 0.3s ease; }
+  .phase-btn.active {
+    border-color: rgba(172, 72, 26, 0.4);
+    background: #0A0A0A;
+    box-shadow: 0 0 24px rgba(172, 72, 26, 0.08);
+  }
+  .phase-btn.active .phase-dot {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(172, 72, 26, 0.5);
+  }
+  .phase-btn.active .phase-title { color: #fff; }
+  .phase-btn.done .phase-dot {
+    border-color: rgba(172, 72, 26, 0.5);
+    color: var(--color-primary);
+  }
+
+  /* Mobile chip states */
+  .phase-chip { transition: all 0.3s ease; }
+  .phase-chip.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 0 16px rgba(172, 72, 26, 0.4);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<section id="process" class="w-full max-w-7xl mx-auto px-6 py-24 md:py-32 scroll-mt-24">
+
+  <!-- Section header -->
+  <div class="flex flex-col items-center text-center mb-16 md:mb-20">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/[0.08] mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+      <span class="text-xs text-neutral-400 tracking-wide font-medium uppercase">The Full-Cycle SaaS Process</span>
+    </div>
+    <h2 class="text-4xl md:text-6xl font-medium tracking-tighter text-white leading-[1.05] max-w-3xl">
+      Ten phases. One team.<br class="hidden md:block" /> Zero handoffs.
+    </h2>
+    <p class="text-lg text-neutral-400 max-w-2xl leading-relaxed mt-6">
+      Most agencies pick up your project at phase three and drop it at phase eight. We are specialists in the
+      <span class="text-white font-medium">entire lifecycle</span> — from validating the idea to operating the product in production. Every phase below is owned, executed, and guaranteed by Pretzel Code.
+    </p>
+  </div>
+
+  <!-- Mobile phase chips (horizontal scroll) -->
+  <div class="lg:hidden flex overflow-x-auto hide-scrollbar gap-2.5 pb-6 -mx-6 px-6" id="phase-chips">
+    {phases.map((p, i) => (
+      <button
+        type="button"
+        class={`phase-chip shrink-0 px-4 py-2.5 rounded-full border border-[#1A1A1A] bg-[#0A0A0A] text-xs font-mono text-neutral-400 whitespace-nowrap ${i === 0 ? 'active' : ''}`}
+        data-phase-nav={i}
+      >
+        {p.num} · {p.title}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 items-start">
+
+    <!-- Desktop phase navigator -->
+    <div class="hidden lg:flex flex-col gap-2 relative" id="phase-nav">
+      {phases.map((p, i) => (
+        <button
+          type="button"
+          class={`phase-btn group text-left flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#1A1A1A] bg-[#050505] hover:border-[#2a2a2a] ${i === 0 ? 'active' : ''}`}
+          data-phase-nav={i}
+        >
+          <span class="phase-dot w-10 h-10 shrink-0 rounded-xl border border-[#222] bg-[#0A0A0A] flex items-center justify-center font-mono text-xs font-semibold text-neutral-500">
+            {p.num}
+          </span>
+          <span class="flex flex-col min-w-0">
+            <span class="phase-title text-sm font-semibold text-neutral-300 truncate">{p.title}</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-600 mt-0.5">{p.tag}</span>
+          </span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-auto shrink-0 text-neutral-700 group-[.active]:text-primary transition-colors"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      ))}
+    </div>
+
+    <!-- Detail panel -->
+    <div class="relative rounded-[28px] border border-[#1A1A1A] bg-[#050505] overflow-hidden lg:sticky lg:top-28 min-h-[560px] flex flex-col">
+      <!-- Ambient glow -->
+      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/[0.07] blur-[100px] rounded-full pointer-events-none"></div>
+
+      {phases.map((p, i) => (
+        <div class={`phase-panel relative z-10 flex-col flex-1 p-8 md:p-12 ${i === 0 ? 'active' : ''}`} data-phase-panel={i}>
+
+          <!-- Watermark number -->
+          <span class="absolute top-4 right-8 text-[7rem] md:text-[9rem] font-black tracking-tighter text-white/[0.03] select-none pointer-events-none leading-none">{p.num}</span>
+
+          <!-- Header -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-[10px] font-mono uppercase tracking-widest text-primary">{p.tag}</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/[0.08] text-[10px] font-mono uppercase tracking-widest text-neutral-400 flex items-center gap-1.5">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+              Owned by Pretzel Code
+            </span>
+          </div>
+
+          <h3 class="text-3xl md:text-4xl font-medium tracking-tighter text-white mb-5">
+            <span class="text-primary font-mono text-xl md:text-2xl align-middle mr-3">{p.num}</span>{p.title}
+          </h3>
+
+          <p class="text-neutral-400 leading-relaxed max-w-2xl mb-8">{p.desc}</p>
+
+          <!-- Deliverables -->
+          <div class="mt-auto">
+            <span class="text-xs font-mono uppercase tracking-widest text-neutral-500 block mb-4">What we deliver</span>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+              {p.deliverables.map((d) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-5 h-5 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <span class="text-sm text-neutral-300 leading-relaxed">{d}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+
+      <!-- Panel footer: progress + controls -->
+      <div class="relative z-10 border-t border-[#1A1A1A] px-8 md:px-12 py-5 flex items-center gap-6 bg-[#050505]">
+        <span class="text-xs font-mono text-neutral-500 whitespace-nowrap">
+          Phase <span id="phase-counter" class="text-white">01</span> / 10
+        </span>
+        <div class="flex-1 h-1 rounded-full bg-[#1A1A1A] overflow-hidden">
+          <div id="phase-progress" class="h-full bg-primary rounded-full transition-all duration-500" style="width:10%"></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" id="phase-prev" aria-label="Previous phase"
+            class="w-9 h-9 rounded-full border border-[#222] bg-[#0A0A0A] flex items-center justify-center text-neutral-500 hover:text-white hover:border-primary/40 transition-all disabled:opacity-30 disabled:pointer-events-none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </button>
+          <button type="button" id="phase-next" aria-label="Next phase"
+            class="w-9 h-9 rounded-full border border-[#222] bg-[#0A0A0A] flex items-center justify-center text-neutral-500 hover:text-white hover:border-primary/40 transition-all disabled:opacity-30 disabled:pointer-events-none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom claim strip -->
+  <div class="mt-10 rounded-[20px] border border-[#1A1A1A] bg-[#0A0A0A] px-6 md:px-10 py-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+    <div class="flex items-center gap-3 shrink-0">
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+      <span class="text-sm font-semibold text-white">End-to-end means end-to-end.</span>
+    </div>
+    <p class="text-sm text-neutral-500 leading-relaxed">
+      Strategy, brand, design, engineering, infrastructure, QA, go-to-market, launch, and ongoing operation — every phase is executed by Pretzel Code specialists under one roof. You never coordinate freelancers, agencies, or handoffs. One partner, accountable for the whole product.
+    </p>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const section = document.getElementById('process');
+    if (!section) return;
+
+    const navBtns = Array.from(section.querySelectorAll<HTMLButtonElement>('[data-phase-nav]'));
+    const panels  = Array.from(section.querySelectorAll<HTMLElement>('[data-phase-panel]'));
+    const counter = section.querySelector<HTMLElement>('#phase-counter');
+    const progress = section.querySelector<HTMLElement>('#phase-progress');
+    const prevBtn = section.querySelector<HTMLButtonElement>('#phase-prev');
+    const nextBtn = section.querySelector<HTMLButtonElement>('#phase-next');
+    const total = panels.length;
+    if (!total) return;
+
+    let current = 0;
+
+    function setPhase(idx: number) {
+      current = Math.max(0, Math.min(total - 1, idx));
+
+      panels.forEach((p, i) => p.classList.toggle('active', i === current));
+
+      navBtns.forEach((btn) => {
+        const i = Number(btn.dataset.phaseNav);
+        btn.classList.toggle('active', i === current);
+        btn.classList.toggle('done', i < current);
+        if (i === current && btn.classList.contains('phase-chip')) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+
+      if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+      if (progress) progress.style.width = `${((current + 1) / total) * 100}%`;
+      if (prevBtn) prevBtn.disabled = current === 0;
+      if (nextBtn) nextBtn.disabled = current === total - 1;
+    }
+
+    navBtns.forEach((btn) => {
+      btn.addEventListener('click', () => setPhase(Number(btn.dataset.phaseNav)));
+    });
+    prevBtn?.addEventListener('click', () => setPhase(current - 1));
+    nextBtn?.addEventListener('click', () => setPhase(current + 1));
+
+    setPhase(0);
+  });
+</script>
