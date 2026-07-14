@@ -1,0 +1,62 @@
+<!-- Cookie Consent Banner (US / CCPA standard) -->
+<div
+  id="cookie-consent"
+  class="fixed bottom-0 left-0 right-0 z-[150] hidden p-4 md:p-6"
+>
+  <div class="max-w-4xl mx-auto bg-[#050505] border border-[#1A1A1A] rounded-[20px] p-6 md:p-8 shadow-2xl shadow-black/60 flex flex-col md:flex-row items-start md:items-center gap-6">
+    <div class="flex-1">
+      <h3 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Cookie Notice</h3>
+      <p class="text-sm text-gray-400">
+        We use cookies and similar technologies to operate this site, analyze traffic, and improve your experience. By clicking "Accept", you consent to our use of cookies. You may decline non-essential cookies. For more information, including your rights under the CCPA, see our
+        <button id="cookie-privacy-link" class="text-white underline underline-offset-2 hover:text-emerald-400 transition-colors">Privacy Policy</button>.
+      </p>
+    </div>
+    <div class="flex items-center gap-3 shrink-0">
+      <button
+        id="cookie-decline"
+        class="px-5 py-2.5 text-sm font-medium text-gray-300 border border-[#1A1A1A] rounded-full hover:text-white hover:border-[#333333] transition-colors"
+      >
+        Decline
+      </button>
+      <button
+        id="cookie-accept"
+        class="px-5 py-2.5 text-sm font-medium text-black bg-white rounded-full hover:bg-emerald-400 transition-colors"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const banner = document.getElementById('cookie-consent');
+    if (!banner) return;
+
+    const consent = localStorage.getItem('pretzel-cookie-consent');
+    if (consent) {
+      banner.classList.add('hidden');
+      return;
+    }
+
+    banner.classList.remove('hidden');
+
+    const setConsent = (value: string) => {
+      localStorage.setItem('pretzel-cookie-consent', value);
+      banner.classList.add('hidden');
+    };
+
+    document.getElementById('cookie-accept')?.addEventListener('click', () => setConsent('accepted'));
+    document.getElementById('cookie-decline')?.addEventListener('click', () => setConsent('declined'));
+
+    // Opens the Privacy Policy modal rendered by Footer.astro
+    document.getElementById('cookie-privacy-link')?.addEventListener('click', () => {
+      const modalPrivacy = document.getElementById('modal-privacy');
+      if (modalPrivacy) {
+        modalPrivacy.classList.remove('hidden');
+        modalPrivacy.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+</script>
