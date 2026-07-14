@@ -3,30 +3,49 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const projects = [
+// FormPush.io brand accent
+const accent = '#EC4899';
+
+const metrics = [
+  { value: '16',   label: 'Recurring customers',   note: 'Active paid subscriptions' },
+  { value: '$15',  label: 'Per month, per customer', note: 'Simple flat pricing' },
+  { value: '10/10', label: 'Phases completed',      note: 'Full lifecycle, zero handoffs' },
+  { value: '$21K', label: 'Current asset valuation', note: 'Grows with every new subscriber' },
+];
+
+const screens = [
   {
-    name:   'NexusFlow',
-    tag:    'B2B SaaS · Enterprise',
-    desc:   'Enterprise search and monitoring engine built for heavy data processing.',
-    tech:   'Python · Supabase · React',
-    color:  '#3B82F6',   // blue
-    glyph:  'NF',
+    src: '/images/lp.png',
+    alt: 'FormPush.io landing page — Turn your Notion table into a powerful web form',
+    caption: 'Landing page — connect, select, customize, publish in four clicks.',
+    wide: true,
   },
   {
-    name:   'VaultMetrics',
-    tag:    'Analytics · Automation',
-    desc:   'Autonomous lead acquisition and workflow automation platform.',
-    tech:   'Python Microservices · PostgreSQL',
-    color:  '#10B981',   // emerald
-    glyph:  'VM',
+    src: '/images/dashboard.png',
+    alt: 'FormPush.io dashboard — connect your Notion workspace via official OAuth',
+    caption: 'Dashboard — secure workspace connection via Notion’s official OAuth.',
+    wide: false,
   },
   {
-    name:   'AuraSync',
-    tag:    'Mobile · Consumer',
-    desc:   'Ultra-fluid native mobile experience engineered for continuous daily use.',
-    tech:   'React Native · Node.js',
-    color:  '#A78BFA',   // violet
-    glyph:  'AS',
+    src: '/images/settings.png',
+    alt: 'FormPush.io settings — custom domains, webhooks, usage and audit logs',
+    caption: 'Settings — custom domains, webhooks, usage tracking and full audit logs.',
+    wide: false,
+  },
+];
+
+const capabilities = [
+  {
+    title: 'Native Notion integration',
+    desc: 'Users authorize via Notion’s official OAuth, pick a database, and every submission lands directly in their workspace. No Zapier, no clunky embeds.',
+  },
+  {
+    title: 'Smart, elegant forms',
+    desc: 'FormPush reads the database schema and generates a clean, branded web form automatically — custom colors, hidden internal properties, clean URL or iframe snippet.',
+  },
+  {
+    title: 'Production-grade operations',
+    desc: 'Custom domains, webhooks, usage limits, audit logs and zero-retention infrastructure. Built, deployed and operated as a real product company would.',
   },
 ];
 ---
@@ -35,119 +54,148 @@ const projects = [
   <Navbar />
 
   <!-- ── Hero ─────────────────────────────────────────────────────── -->
-  <section class="relative w-full flex flex-col items-center justify-center py-32 md:py-44 text-center px-6 overflow-hidden">
+  <section class="relative w-full flex flex-col items-center justify-center py-28 md:py-40 text-center px-6 overflow-hidden">
 
     <!-- Subtle radial glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] blur-[120px] rounded-full pointer-events-none -z-10 opacity-15" style={`background: ${accent};`}></div>
 
     <!-- Eyebrow -->
-    <span class="text-primary font-semibold tracking-widest uppercase text-sm mb-6 block">The Archives</span>
+    <span class="text-primary font-semibold tracking-widest uppercase text-sm mb-6 block">Portfolio · Flagship Case Study</span>
+
+    <!-- Live badge -->
+    <span class="inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase px-4 py-2 rounded-full border mb-8"
+      style={`color: ${accent}; border-color: ${accent}33; background: ${accent}11;`}>
+      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style={`background: ${accent};`}></span>
+      Live in production
+    </span>
 
     <!-- Headline -->
-    <h1 class="text-5xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter leading-[1.05] text-white mb-6">
-      The Archives.
+    <h1 class="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tighter leading-[1.05] text-white mb-6">
+      FormPush.io
     </h1>
 
     <!-- Sub-headline -->
-    <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto tracking-normal leading-relaxed">
-      A curated selection of high-performance digital assets engineered for scale.
+    <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto tracking-normal leading-relaxed mb-10">
+      Turn any Notion database into a powerful, elegant web form. Every submission lands directly in the user's Notion — no middleware, no friction.
     </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="https://formpush.io"
+        target="_blank"
+        rel="noopener"
+        class="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-colors duration-300"
+      >
+        Visit FormPush.io →
+      </a>
+      <a
+        href="/#process"
+        class="px-8 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+      >
+        See the 10-phase process
+      </a>
+    </div>
   </section>
 
-  <!-- ── Portfolio Grid ─────────────────────────────────────────────── -->
   <main class="w-full max-w-7xl mx-auto px-6 pb-32">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      {projects.map((p) => (
-        <div
-          class="group overflow-hidden rounded-[24px] border border-[#1A1A1A] relative cursor-pointer h-[400px] bg-[#050505] transition-all duration-500 hover:border-[#2A2A2A] hover:-translate-y-1 hover:shadow-[0_32px_64px_rgba(0,0,0,0.5)]"
-          data-project={p.name}
-          data-desc={p.desc}
-          data-tech={p.tech}
-        >
-          <!-- ── Abstract visual fill ── -->
-          <div class="absolute inset-0 overflow-hidden">
-
-            <!-- Grid pattern -->
-            <div class="absolute inset-0 opacity-[0.04]"
-              style={`background-image: linear-gradient(${p.color}33 1px, transparent 1px), linear-gradient(90deg, ${p.color}33 1px, transparent 1px); background-size: 40px 40px;`}>
-            </div>
-
-            <!-- Glyph watermark -->
-            <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] font-black tracking-tighter select-none transition-all duration-700 group-hover:scale-110 group-hover:opacity-20"
-              style={`color: ${p.color}; opacity: 0.07;`}
-            >
-              {p.glyph}
-            </div>
-
-            <!-- Radial colour bloom on hover -->
-            <div
-              class="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full blur-[80px] opacity-0 group-hover:opacity-30 transition-opacity duration-700"
-              style={`background: ${p.color};`}
-            ></div>
-
-          </div>
-
-          <!-- ── Card content ── -->
-          <div class="relative z-10 h-full flex flex-col justify-between p-8">
-
-            <!-- Top: tag pill -->
-            <div class="flex items-start justify-between">
-              <span
-                class="text-[10px] font-mono font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full border"
-                style={`color: ${p.color}; border-color: ${p.color}33; background: ${p.color}11;`}
-              >
-                {p.tag}
-              </span>
-
-              <!-- Arrow icon (appears on hover) -->
-              <div
-                class="w-9 h-9 rounded-full border border-[#1A1A1A] flex items-center justify-center text-neutral-700 opacity-0 group-hover:opacity-100 group-hover:border-[#333] group-hover:text-white transition-all duration-300 -translate-y-1 group-hover:translate-y-0"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
-                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Bottom: project name + meta -->
-            <div>
-              <!-- Description (slides up on hover) -->
-              <p
-                class="text-sm text-neutral-500 leading-relaxed mb-4 max-w-[240px] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400"
-              >
-                {p.desc}
-              </p>
-
-              <!-- Project name -->
-              <h2 class="text-3xl font-semibold tracking-tight text-white mb-1">
-                {p.name}
-              </h2>
-
-              <!-- Tech stack -->
-              <span class="text-xs font-mono text-neutral-600 tracking-wide">
-                {p.tech}
-              </span>
-            </div>
-
-          </div>
-
-          <!-- ── Bottom accent line ── -->
-          <div
-            class="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 ease-out rounded-b-[24px]"
-            style={`background: linear-gradient(90deg, ${p.color}, transparent);`}
-          ></div>
-
+    <!-- ── Metrics band ─────────────────────────────────────────────── -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
+      {metrics.map((m) => (
+        <div class="rounded-[24px] border border-[#1A1A1A] bg-[#050505] p-8 flex flex-col gap-2">
+          <span class="text-4xl md:text-5xl font-medium tracking-tighter text-white">{m.value}</span>
+          <span class="text-sm font-semibold text-neutral-300">{m.label}</span>
+          <span class="text-xs text-neutral-500">{m.note}</span>
         </div>
       ))}
+    </div>
 
+    <!-- ── Screens gallery ──────────────────────────────────────────── -->
+    <div class="mb-24">
+      <p class="text-xs text-neutral-600 uppercase tracking-widest font-mono mb-6">Inside the product</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {screens.map((s) => (
+          <figure class={`group rounded-[24px] border border-[#1A1A1A] bg-[#050505] overflow-hidden transition-all duration-500 hover:border-[#2A2A2A] ${s.wide ? 'md:col-span-2' : ''}`}>
+            <div class="overflow-hidden border-b border-[#1A1A1A]">
+              <img
+                src={s.src}
+                alt={s.alt}
+                loading="lazy"
+                class="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+            <figcaption class="p-5 text-sm text-neutral-500">{s.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+
+    <!-- ── What we built ────────────────────────────────────────────── -->
+    <div class="mb-24">
+      <p class="text-xs text-neutral-600 uppercase tracking-widest font-mono mb-6">What we built</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {capabilities.map((c) => (
+          <div class="rounded-[24px] border border-[#1A1A1A] bg-[#050505] p-8">
+            <h3 class="text-lg font-semibold text-white mb-3">{c.title}</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ── Process proof ────────────────────────────────────────────── -->
+    <div class="rounded-[24px] border border-[#1A1A1A] bg-[#050505] p-10 md:p-14 mb-24 relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full blur-[120px] opacity-10 pointer-events-none" style={`background: ${accent};`}></div>
+      <div class="relative z-10 max-w-3xl">
+        <p class="text-xs text-neutral-600 uppercase tracking-widest font-mono mb-6">Proof of process</p>
+        <h2 class="text-3xl md:text-5xl font-medium tracking-tighter text-white leading-[1.1] mb-6">
+          From phase 00 to 09.<br />Idea to recurring revenue.
+        </h2>
+        <p class="text-neutral-400 leading-relaxed mb-8">
+          FormPush.io went through every one of our ten phases — Discovery &amp; Validation, Brand, Product Design, Architecture, Development, Infrastructure &amp; DevOps, Testing &amp; QA, Go-to-Market, Launch, and Support &amp; Continuous Operation. The result is a live SaaS with paying customers and growing monthly recurring revenue — the clearest evidence of how efficiently the full lifecycle works when one team owns all of it.
+        </p>
+        <a href="/#process" class="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-primary transition-colors">
+          Explore the 10-phase process
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Acquisition offer ────────────────────────────────────────── -->
+    <div class="rounded-[24px] border p-10 md:p-14 mb-24 relative overflow-hidden" style={`border-color: ${accent}33; background: linear-gradient(180deg, ${accent}0A, #050505);`}>
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-xs uppercase tracking-widest font-mono mb-6" style={`color: ${accent};`}>Acquisition opportunity</p>
+          <h2 class="text-3xl md:text-5xl font-medium tracking-tighter text-white leading-[1.1] mb-6">
+            This asset is available.
+          </h2>
+          <p class="text-neutral-400 leading-relaxed">
+            FormPush.io can be acquired as a fully operational, revenue-generating SaaS. The current valuation stands at <span class="text-white font-medium">$21,000</span> — and it is pegged to recurring revenue: every new subscriber automatically increases the asset's value. The sooner the conversation starts, the better the price.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="rounded-2xl border border-[#1A1A1A] bg-black/40 p-6 flex items-baseline justify-between">
+            <span class="text-sm text-neutral-400">Valuation to date</span>
+            <span class="text-3xl font-medium tracking-tighter text-white">$21,000</span>
+          </div>
+          <div class="rounded-2xl border border-[#1A1A1A] bg-black/40 p-6 flex items-baseline justify-between">
+            <span class="text-sm text-neutral-400">Monthly recurring revenue</span>
+            <span class="text-3xl font-medium tracking-tighter text-white">$240<span class="text-base text-neutral-500">/mo</span></span>
+          </div>
+          <a
+            href="/contact"
+            class="px-8 py-4 rounded-full text-center text-white font-semibold text-sm transition-colors duration-300"
+            style={`background: ${accent};`}
+          >
+            Talk to us about this asset
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- ── Secondary CTA ─────────────────────────────────────────────── -->
-    <div class="flex flex-col items-center gap-6 mt-24 text-center">
-      <p class="text-neutral-500 text-sm tracking-wide uppercase font-mono">Want to see more?</p>
+    <div class="flex flex-col items-center gap-6 text-center">
+      <p class="text-neutral-500 text-sm tracking-wide uppercase font-mono">Want a SaaS like this built for you?</p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a
           href="/partnership"
@@ -166,182 +214,6 @@ const projects = [
 
   </main>
 
-
   <Footer />
-
-  <!-- ── Project Modal ──────────────────────────────────────────────── -->
-  <div
-    id="project-modal"
-    class="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4
-           opacity-0 pointer-events-none transition-opacity duration-300"
-    aria-modal="true"
-    role="dialog"
-    aria-label="Project details"
-  >
-    <!-- Modal container -->
-    <div class="relative w-full max-w-5xl bg-[#050505] border border-[#1A1A1A] rounded-[24px] overflow-hidden flex flex-col max-h-[90vh]
-                scale-95 transition-transform duration-300"
-         id="modal-container">
-
-      <!-- ── Close button ── -->
-      <button
-        id="close-modal"
-        class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full bg-white/5 border border-white/10
-               flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10
-               hover:border-white/20 transition-all duration-200 focus:outline-none"
-        aria-label="Close modal"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-
-      <!-- ── Image area ── -->
-      <div class="relative h-[40vh] md:h-[50vh] bg-[#0A0A0A] flex-shrink-0 overflow-hidden">
-        <!-- Placeholder glyph (shown when no image) -->
-        <div id="modal-glyph"
-             class="absolute inset-0 flex items-center justify-center text-[8rem] font-black tracking-tighter select-none opacity-10"
-             style="color: #fff;">
-        </div>
-        <!-- Grid overlay pattern -->
-        <div id="modal-grid-pattern" class="absolute inset-0 opacity-[0.05]"></div>
-        <!-- Colour bloom -->
-        <div id="modal-bloom"
-             class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full blur-[100px] opacity-30">
-        </div>
-        <img
-          id="modal-image"
-          src=""
-          alt=""
-          class="relative z-10 w-full h-full object-cover object-center hidden"
-        />
-      </div>
-
-      <!-- ── Text content ── -->
-      <div class="flex-1 overflow-y-auto p-8 md:p-10">
-
-        <!-- Header row -->
-        <div class="flex items-start justify-between mb-6">
-          <div>
-            <!-- Category tag -->
-            <span id="modal-tag"
-                  class="text-[10px] font-mono font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full border mb-4 inline-block">
-            </span>
-            <!-- Title -->
-            <h2 id="modal-title" class="text-4xl md:text-5xl font-medium tracking-tighter text-white leading-[1.05]"></h2>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <p id="modal-desc" class="text-neutral-400 text-base leading-relaxed max-w-2xl mt-2 mb-8"></p>
-
-        <!-- Tech stack chips -->
-        <div class="mb-2">
-          <p class="text-xs text-neutral-600 uppercase tracking-widest font-mono mb-3">Tech Stack</p>
-          <div id="modal-tech" class="flex flex-wrap gap-2"></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Project colour map (mirrors frontmatter)
-    const projectMeta: Record<string, { color: string; glyph: string; tag: string }> = {
-      'NexusFlow':    { color: '#3B82F6', glyph: 'NF', tag: 'B2B SaaS · Enterprise' },
-      'VaultMetrics': { color: '#10B981', glyph: 'VM', tag: 'Analytics · Automation' },
-      'AuraSync':     { color: '#A78BFA', glyph: 'AS', tag: 'Mobile · Consumer' },
-    };
-
-    document.addEventListener('astro:page-load', () => {
-      const modal     = document.getElementById('project-modal') as HTMLElement | null;
-      const container = document.getElementById('modal-container') as HTMLElement | null;
-      const closeBtn  = document.getElementById('close-modal') as HTMLElement | null;
-
-      if (!modal || !container || !closeBtn) return;
-
-      // ── Helpers ──────────────────────────────────────────────────────
-      function openModal(data: { project: string; desc: string; tech: string }) {
-        const meta = projectMeta[data.project] ?? { color: '#ffffff', glyph: '?', tag: '' };
-
-        // Populate fields
-        const title   = document.getElementById('modal-title');
-        const desc    = document.getElementById('modal-desc');
-        const techEl  = document.getElementById('modal-tech');
-        const tag     = document.getElementById('modal-tag');
-        const glyph   = document.getElementById('modal-glyph');
-        const bloom   = document.getElementById('modal-bloom');
-        const pattern = document.getElementById('modal-grid-pattern');
-
-        if (title)   title.textContent = data.project;
-        if (desc)    desc.textContent  = data.desc;
-        if (tag) {
-          tag.textContent = meta.tag;
-          tag.setAttribute('style',
-            `color:${meta.color}; border-color:${meta.color}33; background:${meta.color}11;`);
-        }
-        if (glyph) {
-          glyph.textContent = meta.glyph;
-          glyph.style.color = meta.color;
-        }
-        if (bloom)   bloom.style.background   = meta.color;
-        if (pattern) pattern.style.backgroundImage =
-          `linear-gradient(${meta.color}33 1px,transparent 1px),` +
-          `linear-gradient(90deg,${meta.color}33 1px,transparent 1px)`;
-        if (pattern) pattern.style.backgroundSize = '40px 40px';
-
-        // Tech chips
-        if (techEl) {
-          techEl.innerHTML = '';
-          data.tech.split('·').forEach(t => {
-            const chip = document.createElement('span');
-            chip.textContent = t.trim();
-            chip.className = 'px-3 py-1.5 rounded-full text-xs font-mono border border-[#1A1A1A] text-neutral-400 bg-white/[0.03]';
-            techEl.appendChild(chip);
-          });
-        }
-
-        // Animate open
-        document.body.style.overflow = 'hidden';
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modal.classList.add('opacity-100');
-        container.classList.remove('scale-95');
-        container.classList.add('scale-100');
-      }
-
-      function closeModal() {
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.classList.remove('opacity-100');
-        container.classList.add('scale-95');
-        container.classList.remove('scale-100');
-        document.body.style.overflow = '';
-      }
-
-      // ── Wire card clicks ──────────────────────────────────────────────
-      document.querySelectorAll<HTMLElement>('[data-project]').forEach(card => {
-        card.addEventListener('click', () => {
-          openModal({
-            project: card.dataset.project ?? '',
-            desc:    card.dataset.desc    ?? '',
-            tech:    card.dataset.tech    ?? '',
-          });
-        });
-      });
-
-      // ── Close triggers ────────────────────────────────────────────────
-      closeBtn.addEventListener('click', closeModal);
-
-      // Backdrop click (outside container)
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      // Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-      });
-    });
-  </script>
 
 </Layout>
